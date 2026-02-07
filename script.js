@@ -1,18 +1,24 @@
-let h1 = document.querySelector("h1");
 let input = document.querySelector("input");
-let counter = document.querySelector("span");
+let span = document.querySelector("span");
+let h1 = document.querySelector("h1");
 
 let maxLength = 20;
-counter.textContent = maxLength;
+span.textContent = maxLength;
 
-input.addEventListener("input", function() {
-    let count = maxLength - this.value.length;
+input.addEventListener("input", function(dets) {
+    console.log(input.value.length);
+
+    inputLength = input.value.length;
+    let counter = span.textContent = maxLength - inputLength;
     
-    counter.textContent = count;
+    if(inputLength > maxLength) {
+        // h1.innerHTML = `Character limit crossed : <span style="color: red;">${counter}</span>`;
+        // span.style.color = "red";
 
-    if (count < 0) {
-        h1.innerHTML = `Character limit crossed: <span id="counter">${count}</span>`;
+        h1.innerHTML = `Character limit crossed : <span style="color: red";>${counter}</span>`;
+        // span.setAttribute("id", "count-color");
     } else {
-        h1.innerHTML = `Character left: <span>${count}</span>`;
+        h1.textContent = `Character left : ${counter}`
     }
+    
 });
